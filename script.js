@@ -1,8 +1,9 @@
 'use strict';
 
-let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100x100", ""));
-numSquares = (numSquares > 100) ? 100 : numSquares;
-const sqSize = Math.floor(1000/numSquares);
+let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
+numSquares = (numSquares === 0) ? 16 : (numSquares > 100) ? 100 : numSquares;
+const sqSize = Math.floor(1000/numSquares) + 1;
+console.log(sqSize);
 const gridContainer = document.querySelector('.grid-container');
 for(let i = 0; i < numSquares; i++){
     let rowContainer = document.createElement('div');
