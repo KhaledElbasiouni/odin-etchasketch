@@ -12,6 +12,8 @@ body {
 
 .grid-container {
     border: 1px solid black;
+    height: 1000px;
+    width: 1000px;
 }
 
 .grid-row {
@@ -19,8 +21,6 @@ body {
 }
 
 .grid-item {
-    /* border: 1px solid black; */
-    height: 40px;
-    width: 40px;
+
 }
 
