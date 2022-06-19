@@ -8,12 +8,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #F4FAFF;
 }
 
 .grid-container {
-    border: 1px solid black;
+    background-color: #FFF;
+    /* border: 1px solid black; */
     height: 1000px;
     width: 1000px;
+
+    box-shadow: 0 0 15px -5px currentcolor; /* hor-offset(+ve,-ve) ver-offset (+ve,-ev) blur(+ve) spread(+ve,-ve) */
 }
 
 .grid-row {
@@ -21,6 +25,6 @@ body {
 }
 
 .grid-item {
-
+    display: inline-block;
 }
 

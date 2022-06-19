@@ -20,10 +20,8 @@ setDimensions(sqSize);
 
 
 const gridItems = document.querySelectorAll('.grid-item');
-// const gridItems = document.querySelectorAll('div');
 
 gridItems.forEach(item => item.addEventListener('mouseenter', e => {
-    // console.log(e.target);
     e.target.style['background-color'] = 'black';
 }));
 
@@ -36,5 +34,4 @@ function setDimensions(size){
             ss.cssRules[i].style.height = `${size}px`;
         }
     }
-    console.log(ss)
 }
