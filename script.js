@@ -1,9 +1,8 @@
 'use strict';
 
 let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
+// let numSquares = 100;
 numSquares = (numSquares === 0) ? 16 : (numSquares > 100) ? 100 : numSquares;
-const sqSize = Math.floor(1000/numSquares) + 1;
-console.log(sqSize);
 const gridContainer = document.querySelector('.grid-container');
 for(let i = 0; i < numSquares; i++){
     let rowContainer = document.createElement('div');
@@ -15,6 +14,15 @@ for(let i = 0; i < numSquares; i++){
     }
     gridContainer.appendChild(rowContainer);
 }
+const gridContainerStyles = window.getComputedStyle(gridContainer); //gets GridContainer Styles
+let gridContainerDim = gridContainerStyles.getPropertyValue('width');
+gridContainerDim = Number(gridContainerDim.slice(0, gridContainerDim.length -2)); // Removes px
+let sqSize = 0;
+sqSize = gridContainerDim/numSquares;
+// if(gridContainerDim % numSquares === 0) {
+// }else {
+//     sqSize = Math.floor(gridContainerDim/numSquares);
+// }
 setDimensions(sqSize);
 
 

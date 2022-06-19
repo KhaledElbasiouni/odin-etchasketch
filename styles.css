@@ -1,6 +1,7 @@
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
 
 body {
@@ -8,23 +9,28 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F4FAFF;
+    background-color: #e5e5e5;
+    /* background-color: black; */
 }
 
 .grid-container {
+    display: flex;
+    flex-direction: column;
     background-color: #FFF;
-    /* border: 1px solid black; */
-    height: 1000px;
-    width: 1000px;
-
-    box-shadow: 0 0 15px -5px currentcolor; /* hor-offset(+ve,-ve) ver-offset (+ve,-ev) blur(+ve) spread(+ve,-ve) */
+    /* border: 1px solid red; */
+    height: 900px;
+    width: 900px;
+    box-shadow: 0 0 20px -5px currentcolor; /* hor-offset(+ve,-ve) ver-offset (+ve,-ev) blur(+ve) spread(+ve,-ve) */
 }
 
 .grid-row {
     display: flex;
+    /* border: 1px solid black; */
 }
 
 .grid-item {
-    display: inline-block;
+    /* border: 1px solid black; */
+    /* width: 62.5px;
+    height: 62.5px; */
 }
 
