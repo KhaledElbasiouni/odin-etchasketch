@@ -1,8 +1,7 @@
 'use strict';
 const DEFAULT_SIZE = 16;
 const CANVAS_COLOR = '#fff';
-// let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
-let numSquares = 0;
+let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
 numSquares = (numSquares === 0) ? DEFAULT_SIZE : (numSquares > 100) ? 100 : numSquares;
 
 const gridContainer = document.querySelector('.grid-container');
@@ -25,6 +24,7 @@ document.body.onmouseup = () => mouseDown = false;
 penBtn.onclick = () => setCurrentMode('Pen');
 rainbowBtn.onclick = () => setCurrentMode('Rainbow');
 eraserBtn.onclick = () => setCurrentMode('Eraser');
+clearBtn.onclick = () => clearGrid();
 
 
 function changeColor(e){
