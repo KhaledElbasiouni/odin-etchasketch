@@ -8,19 +8,41 @@ numSquares = (numSquares === 0) ? DEFAULT_SIZE : (numSquares > 100) ? 100 : numS
 const gridContainer = document.querySelector('.grid-container');
 
 let selectedColor = 'black';
+let currMode = 'Pen';
 createGrid();
 setSquareSize();
 
 
 const gridItems = document.querySelectorAll('.grid-item');
+const penBtn = document.querySelector('.pen-btn');
+const rainbowBtn = document.querySelector('.rainbow-btn');
+const eraserBtn = document.querySelector('.eraser-btn');
+const clearBtn = document.querySelector('.clear-btn');
+
 let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
+penBtn.onclick = () => setCurrentMode('Pen');
+rainbowBtn.onclick = () => setCurrentMode('Rainbow');
+eraserBtn.onclick = () => setCurrentMode('Eraser');
 
 
 function changeColor(e){
     if(e.type === 'mouseover' && !mouseDown) return;
-        e.target.style['background-color'] = selectedColor;
+    switch (currMode) {
+        case 'Pen':
+            e.target.style['background-color'] = selectedColor;
+            break;
+        case 'Rainbow':
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            e.target.style['background-color'] = `rgb(${r}, ${g}, ${b})`;
+            break;
+        case 'Eraser':
+            e.target.style['background-color'] = CANVAS_COLOR;
+            break;
+    }
 }
 
 function createGrid(){
@@ -38,6 +60,10 @@ function createGrid(){
     }
 }
 
+function clearGrid(){
+    gridItems.forEach(item => item.style['background-color'] = CANVAS_COLOR);
+}
+
 function setSquareSize(){
     const gridContainerStyles = window.getComputedStyle(gridContainer); //gets GridContainer Styles
     let gridContainerDim = gridContainerStyles.getPropertyValue('width');
@@ -53,4 +79,8 @@ function setDimensions(size){
             ss.cssRules[i].style.height = `${size}px`;
         }
     }
+}
+
+function setCurrentMode(newMode){
+    currMode = newMode;
 }
