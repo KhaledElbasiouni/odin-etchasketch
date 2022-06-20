@@ -8,11 +8,12 @@ const gridContainer = document.querySelector('.grid-container');
 
 let selectedColor = 'black';
 let currMode = 'Pen';
+
 createGrid();
+const gridItems = document.querySelectorAll('.grid-item');
 setSquareSize();
 
 
-const gridItems = document.querySelectorAll('.grid-item');
 const penBtn = document.querySelector('.pen-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
 const eraserBtn = document.querySelector('.eraser-btn');
@@ -72,13 +73,7 @@ function setSquareSize(){
     setDimensions(sqSize);
 }
 function setDimensions(size){
-    const ss = document.styleSheets[0]; // ss -> styleSheets
-    for(let i = 0; i < ss.cssRules.length; i++){
-        if(ss.cssRules[i].selectorText === '.grid-item'){
-            ss.cssRules[i].style.width = `${size}px`;
-            ss.cssRules[i].style.height = `${size}px`;
-        }
-    }
+    gridItems.forEach(item => item.style.cssText = `width: ${size}px; height: ${size}px;`);
 }
 
 function setCurrentMode(newMode){
