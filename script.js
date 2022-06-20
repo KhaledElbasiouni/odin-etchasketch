@@ -1,7 +1,9 @@
 'use strict';
-
+const DEFAULT_SIZE = 16;
+const CANVAS_COLOR = '#fff';
 let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
-numSquares = (numSquares === 0) ? 16 : (numSquares > 100) ? 100 : numSquares;
+numSquares = (numSquares === 0) ? DEFAULT_SIZE : (numSquares > 100) ? 100 : numSquares;
+
 const gridContainer = document.querySelector('.grid-container');
 
 let selectedColor = 'black';
@@ -10,11 +12,14 @@ setSquareSize();
 
 
 const gridItems = document.querySelectorAll('.grid-item');
-gridItems.forEach(item => item.addEventListener('mouseenter', changeBackgroundColor));
+let mouseDown = false;
+gridContainer.onmousedown = () => mouseDown = true;
+gridContainer.onmouseup = () => mouseDown = false;
 
 
-function changeBackgroundColor(e){
-    e.target.style['background-color'] = selectedColor;
+function changeColor(e){
+    if(e.type === 'mouseover' && !mouseDown) return;
+        e.target.style['background-color'] = selectedColor;
 }
 
 function createGrid(){
@@ -24,6 +29,8 @@ function createGrid(){
         for(let j = 0; j < numSquares; j++){
             let square = document.createElement('div');
             square.classList.add('grid-item');
+            square.addEventListener('mouseover', changeColor);
+            square.addEventListener('mousedown', changeColor);
             rowContainer.appendChild(square);
         }
         gridContainer.appendChild(rowContainer);
