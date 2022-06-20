@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    --canvas-height: 800px;
 }
 
 body {
@@ -10,14 +11,15 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #e5e5e5;
+    gap: 200px;
 }
 
 .grid-container {
     display: flex;
     flex-direction: column;
     background-color: #FFF;
-    height: 700px;
-    width: 700px;
+    height: var(--canvas-height);
+    width: var(--canvas-height);
     box-shadow: 0 0 20px -5px currentcolor; /* hor-offset(+ve,-ve) ver-offset (+ve,-ev) blur(+ve) spread(+ve,-ve) */
 }
 
@@ -30,3 +32,18 @@ body {
     height: 0;
 }
 
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    /* height: 35%; */
+}
+
+button {
+    font-size: 24px;
+    padding:10px 20px;
+    border-radius: 5px;
+    width: 200px;
+}
