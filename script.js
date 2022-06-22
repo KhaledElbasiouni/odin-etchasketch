@@ -1,8 +1,8 @@
 'use strict';
 const DEFAULT_SIZE = 16;
-const CANVAS_COLOR = '#fff';
+const CANVAS_COLOR = '#ffffff';
 const DEFAULT_MODE = 'pen';
-const DEFAULT_COLOR = '#000';
+const DEFAULT_COLOR = '#000000';
 let numSquares = DEFAULT_SIZE;
 
 const gridContainer = document.querySelector('.grid-container');
