@@ -2,15 +2,14 @@
 const DEFAULT_SIZE = 16;
 const CANVAS_COLOR = '#fff';
 const DEFAULT_MODE = 'pen';
-let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
-numSquares = (numSquares === 0) ? DEFAULT_SIZE : (numSquares > 100) ? 100 : numSquares;
+let numSquares = DEFAULT_SIZE;
 
 const gridContainer = document.querySelector('.grid-container');
 
 let selectedColor = 'black';
 let currMode = DEFAULT_MODE;
 createGrid();
-const gridItems = document.querySelectorAll('.grid-item');
+let gridItems = document.querySelectorAll('.grid-item');
 setSquareSize();
 
 
@@ -18,7 +17,10 @@ const penBtn = document.querySelector('.pen-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
 const eraserBtn = document.querySelector('.eraser-btn');
 const clearBtn = document.querySelector('.clear-btn');
+const slider = document.querySelector('.slider');
+const value = document.querySelector('.value');
 
+setValue(DEFAULT_SIZE);
 let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
@@ -26,6 +28,18 @@ penBtn.onclick = () => setCurrentMode('pen');
 rainbowBtn.onclick = () => setCurrentMode('rainbow');
 eraserBtn.onclick = () => setCurrentMode('eraser');
 clearBtn.onclick = () => clearGrid();
+
+slider.onmousemove = (e) => {
+    setValue(e.target.value);
+};
+
+slider.onchange = (e) => {
+    numSquares = e.target.value;
+    gridContainer.innerHTML = '';
+    createGrid();
+    gridItems = document.querySelectorAll('.grid-item');
+    setSquareSize();
+};
 
 setCurrentMode(DEFAULT_MODE);
 
@@ -98,4 +112,8 @@ function activateButton(newMode) {
     }else if(newMode === 'eraser') {
         eraserBtn.classList.add('active');
     }
+}
+
+function setValue(newValue){
+    value.innerHTML = `${newValue} x ${newValue}`;
 }
