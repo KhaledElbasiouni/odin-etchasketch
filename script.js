@@ -1,13 +1,14 @@
 'use strict';
 const DEFAULT_SIZE = 16;
 const CANVAS_COLOR = '#fff';
+const DEFAULT_MODE = 'pen';
 let numSquares = Number(prompt("How big do you want this grid? (Eg. 16 = 16x16) \n*MAX: 100 x 100\n**No negative numbers", ""));
 numSquares = (numSquares === 0) ? DEFAULT_SIZE : (numSquares > 100) ? 100 : numSquares;
 
 const gridContainer = document.querySelector('.grid-container');
 
 let selectedColor = 'black';
-let currMode = 'Pen';
+let currMode = DEFAULT_MODE;
 createGrid();
 setSquareSize();
 
@@ -21,25 +22,26 @@ const clearBtn = document.querySelector('.clear-btn');
 let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
-penBtn.onclick = () => setCurrentMode('Pen');
-rainbowBtn.onclick = () => setCurrentMode('Rainbow');
-eraserBtn.onclick = () => setCurrentMode('Eraser');
+penBtn.onclick = () => setCurrentMode('pen');
+rainbowBtn.onclick = () => setCurrentMode('rainbow');
+eraserBtn.onclick = () => setCurrentMode('eraser');
 clearBtn.onclick = () => clearGrid();
 
+setCurrentMode(DEFAULT_MODE);
 
 function changeColor(e){
     if(e.type === 'mouseover' && !mouseDown) return;
     switch (currMode) {
-        case 'Pen':
+        case 'pen':
             e.target.style['background-color'] = selectedColor;
             break;
-        case 'Rainbow':
+        case 'rainbow':
             const r = Math.floor(Math.random() * 256);
             const g = Math.floor(Math.random() * 256);
             const b = Math.floor(Math.random() * 256);
             e.target.style['background-color'] = `rgb(${r}, ${g}, ${b})`;
             break;
-        case 'Eraser':
+        case 'eraser':
             e.target.style['background-color'] = CANVAS_COLOR;
             break;
     }
@@ -82,5 +84,24 @@ function setDimensions(size){
 }
 
 function setCurrentMode(newMode){
+    activateButton(newMode);
     currMode = newMode;
+}
+
+function activateButton(newMode) {
+    if(currMode === 'rainbow'){
+        rainbowBtn.classList.remove('active');
+    }else if(currMode === 'pen'){
+        penBtn.classList.remove('active');
+    }else if(currMode === 'eraser'){
+        eraserBtn.classList.remove('active');
+    }
+
+    if(newMode === 'rainbow') {
+        rainbowBtn.classList.add('active');
+    }else if(newMode === 'pen'){
+        penBtn.classList.add('active');
+    }else if(newMode === 'eraser') {
+        eraserBtn.classList.add('active');
+    }
 }
