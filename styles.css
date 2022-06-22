@@ -28,8 +28,7 @@ body {
 }
 
 .grid-item {
-    width: 0;
-    height:0;
+    user-select: none;
 }
 
 .button-container {
@@ -46,4 +45,10 @@ button {
     padding:10px 20px;
     border-radius: 5px;
     width: 200px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #5e6472;
+    color: #e5e5e5;
 }
