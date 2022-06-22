@@ -2,18 +2,36 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    --canvas-height: 800px;
+    --canvas-height: 600px;
+    font-family: 'Indie Flower', cursive;
 }
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column;
     background-color: #e5e5e5;
-    gap: 200px;
 }
 
+header {
+    width: 100%;
+    text-align: center;
+    font-size: 80px;
+    margin: 20px 0px 50px 0px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+footer {
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 100px;
+}
 .grid-container {
     display: flex;
     flex-direction: column;
@@ -37,15 +55,15 @@ body {
     justify-content: space-around;
     align-items: center;
     gap: 40px;
-    /* height: 35%; */
 }
 
 button {
-    font-size: 24px;
-    padding:10px 20px;
+    font-size: 28px;
+    padding:8px 18px;
     border-radius: 5px;
-    width: 200px;
+    width: 180px;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .active {
