@@ -30,7 +30,7 @@ penBtn.onclick = () => setCurrentMode('pen');
 rainbowBtn.onclick = () => setCurrentMode('rainbow');
 eraserBtn.onclick = () => setCurrentMode('eraser');
 clearBtn.onclick = () => clearGrid();
-colorPicker.onchange = (e) => setColor(e.target.value); 
+colorPicker.oninput = (e) => setColor(e.target.value); 
 slider.onmousemove = (e) => {
     setValue(e.target.value);
 };
