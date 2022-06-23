@@ -24,8 +24,8 @@ const colorPicker = document.querySelector('.color-picker');
 
 setValue(DEFAULT_SIZE);
 let mouseDown = false;
-document.body.onmousedown = () => mouseDown = true;
-document.body.onmouseup = () => mouseDown = false;
+document.body.addEventListener("mousedown", () => (mouseDown = true))
+document.body.addEventListener("mouseup", () => (mouseDown = false))
 penBtn.onclick = () => setCurrentMode('pen');
 rainbowBtn.onclick = () => setCurrentMode('rainbow');
 eraserBtn.onclick = () => setCurrentMode('eraser');
